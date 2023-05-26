@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | NFT preview card component</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body {
+      background: hsl(217, 54%, 11%);
+      width: 100%;
+      height: 100%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    /*box*/
+    .box {
+      position: fixed;
+      display: block;
+      flex-direction: column;
+      background: hsl(216, 50%, 16%);
+      width: auto;
+      height: auto;
+      align-items: center;
+      border-radius: 32px;
+      margin: auto;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cube {
+      height: 400px;
+      width: 400px;
+      border-radius: 20px;
+      margin: 30px;
+    }
+    .box .pic {
+      height: 400px;
+      width: 400px;
+      border-radius: 20px;
+      margin: 30px;
+      padding: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .box .pic .view {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+      opacity: 0;
+    }
+
+    .box .pic::before {
+      content: "";
+      height: 100%;
+      width: 100%;
+      border-radius: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: hsla(178, 100%, 50%, 0.4);
+      opacity: 0;
+    }
+
+    .box .pic:hover::before,
+    .box .pic:hover .view {
+      opacity: 1;
+      cursor: pointer;
+    }
+  
+    h1 {
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+    }
+
+    h1:hover {
+      color: hsl(178, 100%, 50%);
+      cursor: pointer;
+    }
+    /*container*/
+    .container {
+      width: 400px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      margin-right: 30px;
+      margin-left: 30px;
+      padding-right: 0;
+      padding-left: 0;
+    }
+
+    .container .content {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 300;
+      color: hsl(215, 51%, 70%);
+      font-size: 24px;
+      line-height: 1.4;
+    }
+
+    .container .add {
+      display:  flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    
+    .add .price {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+    .price img {
+      width: 15px;
+      height: 30px;
+      margin: 10px;
+    }
+
+    .price p {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      color: hsl(178, 100%, 50%);
+      font-size: 18px;
+      padding-bottom: 12px;
+    }
+
+    .add .time {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .time img {
+      width: 30px;
+      height: 30px;
+      margin: 10px;
+    }
+
+    .time p {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: hsl(215, 51%, 70%);
+    }
+
+    .bar {
+      height: 0;
+      width: auto;
+      border: 0.5px solid hsl(215, 51%, 70%);
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: row;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .profile img {
+      width: 50px;
+      height: 50px;
+      border: 2px solid hsl(215, 51%, 70%);
+      border-radius: 25px;
+      margin-right: 20px;
+    }
+
+    .profile p {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      color: white;
+    }
+
+    .profile span {
+      color: hsl(215, 51%, 70%);
+    }
+
+    .attribution {
+      font-size: 11px; 
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 10px;
+    }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+    @media screen and (max-width:375px) {
+      .box {
+        margin: 30px;
+        width: auto;
+      }
+
+      .cube {
+        margin: 30px;
+        width: auto;
+        height: auto;
+      }
+
+      .pic {
+        margin: 30px;
+        width: auto;
+        height: auto;
+      }
+      .container {
+        width: auto;
+        margin: 30px;
+      }
+
+      .attribution {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <img src="images/image-equilibrium.jpg" alt="image" class="cube">
+    <div class="pic">
+      <img src="images/icon-view.svg" alt="icon" class="view">
+    </div>
+    <div class="container">
+      <h1 class="title">Equilibrium #3429</h1>
+      <p class="content">Our Equilibrium collection promotes balance and calm.</p>
+      <div class="add">
+        <div class="price">
+          <img src="images/icon-ethereum.svg" alt="icon" class="icon1">
+          <p>0.041 ETH</p>
+        </div>
+        <div class="time">
+          <img src="images/icon-clock.svg" alt="icon" class="icon2">
+          <p>3 days left</p>
+        </div>
+      </div>
+      <div class="bar"></div>
+      <div class="profile">
+        <img src="images/image-avatar.png" alt="image" class="mypic">
+        <p class="info">
+          <span>Creation of</span>   
+          Jules Wyvern
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+</body>
+</html>
